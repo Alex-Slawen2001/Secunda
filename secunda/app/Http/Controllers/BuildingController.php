@@ -5,6 +5,7 @@ class BuildingController extends Controller
 {
     public function index()
     {
-        return Building::with('organizations')->get();
+        $buildings = Building::with('organizations')->get();
+        return response()->json($buildings, 200, ['Content-Type' => 'application/json']);
     }
 }
