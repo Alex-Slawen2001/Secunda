@@ -4,15 +4,19 @@ return [
     'default' => 'default',
     'documentations' => [
         'default' => [
+            'title' => 'L5 SwaggerController UI',
             'api' => [
-                'title' => 'L5 Swagger UI',
+
             ],
+
 
             'routes' => [
                 /*
                  * Route for accessing api documentation interface
                  */
-                'api' => 'api/documentation',
+                'api' => 'api-docs.json',
+                'docs' => 'swagger-docs',
+
             ],
             'paths' => [
                 /*
@@ -44,8 +48,9 @@ return [
                  * Absolute paths to directory containing the swagger annotations are stored.
                  */
                 'annotations' => [
-                    base_path('app/Swagger/SwaggerDocsAll.php'),
-                ],
+                    base_path('app/Swagger'),
+                    base_path('app/Http/Controllers'),
+                ]
             ],
         ],
     ],
@@ -54,7 +59,9 @@ return [
             /*
              * Route for accessing parsed swagger annotations.
              */
-            'docs' => 'docs',
+            'api'=> 'api-docs.json',
+            'docs' => 'swagger-docs',
+
 
             /*
              * Route for Oauth2 authentication callback.
@@ -81,7 +88,15 @@ return [
             /*
              * Absolute path to location where parsed annotations will be stored
              */
-            'docs' => storage_path('api-docs'),
+
+            'docs_json' => 'api-docs.json', // Имя файла документации
+            'docs_yaml' => 'api-docs.yaml', // Имя файла документации (если используется YAML)
+            'format_to_use_for_docs' => env('L5_FORMAT_TO_USE_FOR_DOCS', 'json'), // Используемый формат
+            'annotations' => [
+                base_path('app'), // Путь к директории с аннотациями
+            ],
+
+            'docs' => public_path('docs'),
 
             /*
              * Absolute path to directory where to export views
@@ -270,7 +285,7 @@ return [
         'validator_url' => null,
 
         /*
-         * Swagger UI configuration parameters
+         * SwaggerController UI configuration parameters
          */
         'ui' => [
             'display' => [
