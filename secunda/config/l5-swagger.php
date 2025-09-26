@@ -89,11 +89,11 @@ return [
              * Absolute path to location where parsed annotations will be stored
              */
 
-            'docs_json' => 'api-docs.json', // Имя файла документации
-            'docs_yaml' => 'api-docs.yaml', // Имя файла документации (если используется YAML)
-            'format_to_use_for_docs' => env('L5_FORMAT_TO_USE_FOR_DOCS', 'json'), // Используемый формат
+            'docs_json' => 'api-docs.json',
+            'docs_yaml' => 'api-docs.yaml',
+            'format_to_use_for_docs' => env('L5_FORMAT_TO_USE_FOR_DOCS', 'json'),
             'annotations' => [
-                base_path('app'), // Путь к директории с аннотациями
+                base_path('app'),
             ],
 
             'docs' => public_path('docs'),
